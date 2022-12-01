@@ -33,8 +33,8 @@ fn main() {
             break;
         }
     }
-    /*println!("Part 1 Answer: {}",get_max(calories));*/
-    println!("Part 2 Answer: {}",get_top_n_sum(calories));
+    println!("Part 1 Answer: {}",get_max(&calories));
+    println!("Part 2 Answer: {}",get_top_n_sum(&calories));
 }
 
 //Returns the next number if line is number or None if empty line,
@@ -57,22 +57,21 @@ fn get_next_number(unsearchedlines: &str) -> (Option<u32>,usize) {
 }
 
 //Part 1 answer
-#[allow(dead_code)]
-fn get_max(calories:Vec<u32>) -> u32 {
-    let mut max : u32 = 0;
+fn get_max(calories:&Vec<u32>) -> u32 {
+    let mut max : &u32 = &0;
     for num in calories {
         if num>max {
             max=num;
         }
     }
-    return max;
+    return *max;
 }
 
 //Part 2 answer
-fn get_top_n_sum(calories:Vec<u32>) -> u32 {
+fn get_top_n_sum(calories:&Vec<u32>) -> u32 {
     //Was going to make TOPNUMS an input variable, but the compiler objects to creating the topn vector with a passed-in variable
     const TOPNUMS:usize=3;
-    let mut topn : [u32;TOPNUMS] = [0;TOPNUMS];
+    let mut topn : [&u32;TOPNUMS] = [&0;TOPNUMS];
     for val in calories {
         if val>topn[TOPNUMS-1] {
             topn[TOPNUMS-1]=val;
