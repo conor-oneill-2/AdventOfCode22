@@ -10,7 +10,7 @@ struct Movement {
 fn main() {
     let mut cargo = parse_cargo("./src/cargo.txt");
     let movements = parse_movements("./src/movements.txt");
-    //println!("Part 1: {}",part1(&mut cargo, &movements));
+    println!("Part 1: {}",part1(&mut cargo.clone(), &movements));
     println!("Part 2: {}",part2(&mut cargo, &movements));
 }
 
@@ -72,6 +72,7 @@ fn parse_movements(filename: &str) -> Vec<Movement> {
     }
     return movements;
 }
+
 
 fn part1(cargo: &mut Vec<String>, movements: &Vec<Movement>) -> String {
     for movement in movements {
